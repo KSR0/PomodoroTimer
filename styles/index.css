@@ -1,16 +1,49 @@
-/*
+header{
+    margin-top: 1.5em;
+}
+
 body {
     background-color: #c7011a;
     font-family: 'Rubik', sans-serif;
+    text-align: center;
+    font-size: 1.7em;
+}
+
+div#travailOuPauseDisplay {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    
 }
 
 div#cercle {
     text-align: center;
-    width: 7em;
-    height: 7em;
-    border-radius: 50px;
-    border: white 20px ;
+    width: 8em;
+    height: 8em;
+    border-radius: 100%;
+    border: black 20px ;
+    background: white;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
 }
-*/
+
+span#tpsDisplay {
+    display: block;
+    text-align: center;
+    padding: 45% 0;
+}
+
+footer {
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    margin-left: -8px;
+    height: 75px;
+    bottom: 0;
+    color: white;
+}
+
+span#footerText {
+    position: relative;
+    bottom: -0.75em;
+}
