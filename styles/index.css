@@ -1,12 +1,16 @@
+/*
 body {
     background-color: #c7011a;
+    font-family: 'Rubik', sans-serif;
 }
 
 div#cercle {
     text-align: center;
-    width: 5em;
-    height: 5em;
-    border-radius: 20px;
-    border: 2em white;
-    background: white;
+    width: 7em;
+    height: 7em;
+    border-radius: 50px;
+    border: white 20px ;
+    margin-left: auto;
+    margin-right: auto;
 }
+*/
