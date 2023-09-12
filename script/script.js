@@ -2,14 +2,14 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     //Declaration des variables
-    let timerDisplay = document.getElementById("timerDisplay");
-    let button = document.getElementById("buttonStart");
-    let stringTravail = document.getElementById("travailText");
-    let stringPause = document.getElementById("pauseText");
+    let tempsAffichage = document.getElementById("tempsAffichage");
+    let bouton = document.getElementById("boutonDebut");
+    let stringTravail = document.getElementById("travailTexte");
+    let stringPause = document.getElementById("pauseTexte");
     
     let tpsTravail = 1500; //25min
     let tpsPause = 300; //5min
-    let currentTime = tpsTravail; //25min
+    let tpsActuel = tpsTravail; //25min
     
     let etatTravailOuPause = "Travail";
     let timerActif = false;
@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function verifEtatTravailOuPause() {
         if (etatTravailOuPause == "Travail") {
-            if (currentTime <= 0) {
-                currentTime = tpsPause;
+            if (tpsActuel <= 0) {
+                tpsActuel = tpsPause;
                 etatTravailOuPause = "Pause";
             } else {
                 stringTravail.style.color = "white";
@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         if (etatTravailOuPause == "Pause") {
-            if (currentTime <= 0) {
-                currentTime = tpsTravail;
+            if (tpsActuel <= 0) {
+                tpsActuel = tpsTravail;
                 etatTravailOuPause = "Travail";
             } else {
                 stringPause.style.color = "white";
@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function diminuerTps() {
         
-        minutes = parseInt(currentTime / 60);
-        secondes = parseInt(currentTime % 60);
+        minutes = parseInt(tpsActuel / 60);
+        secondes = parseInt(tpsActuel % 60);
         
         if (minutes < 10) {
             minutes = "0" + minutes;
@@ -60,26 +60,26 @@ document.addEventListener("DOMContentLoaded", function() {
             secondes = "0" + secondes;
         };
 
-        timerDisplay.innerHTML = `${minutes} : ${secondes}`;
+        tempsAffichage.innerHTML = `${minutes} : ${secondes}`;
 
         verifEtatTravailOuPause();
 
-        if (currentTime > 0) {
-            currentTime--;
+        if (tpsActuel > 0) {
+            tpsActuel--;
         } else {
-            currentTime = 0;
+            tpsActuel = 0;
         }
 
         
     }
 
 
-    button.addEventListener("click", function() {
+    bouton.addEventListener("click", function() {
         
         if (!timerActif) {
             setInterval(diminuerTps, 1000);
             timerActif = true;
-            button.innerHTML = `<em class="fa-solid fa-rotate"></em><br>Reset`;
+            bouton.innerHTML = `<em class="fa-solid fa-rotate"></em><br>Reset`;
         } else {
             location.reload(); //Reinitialiser la page
             timerActif = false;
