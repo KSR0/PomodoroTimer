@@ -110,3 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Probleme au niveau label dans index.html
 	// sur validator w3c, lui convient si 1 label 
 	// alors que pour achecker, il veut 2 labels
+
+	// Retard branche sur Pomodoro_v2
+	// comment regler cela ?
