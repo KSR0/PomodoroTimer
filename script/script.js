@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function() {
     let bouton = document.getElementById("boutonDebut");
     let stringTravail = document.getElementById("travailTexte");
     let stringPause = document.getElementById("pauseTexte");
+    let tpsTravailEntree = document.getElementById("tpsTravailEntree");
+    let tpsPauseEntree = document.getElementById("tpsPauseEntree");
+    let submitBouton = document.getElementById("submitBtn");
     
     let tpsTravail = 1500; //25min
     let tpsPause = 300; //5min
@@ -16,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let minutes;
     let secondes;
+
+    //function
 
     function verifEtatTravailOuPause() {
         if (etatTravailOuPause == "Travail") {
@@ -49,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function diminuerTps() {
-        
         minutes = parseInt(tpsActuel / 60);
         secondes = parseInt(tpsActuel % 60);
         
@@ -75,8 +79,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     bouton.addEventListener("click", function() {
-        
         if (!timerActif) {
+            if (tpsTravailEntree.value != "") {
+                tpsTravail = tpsTravailEntree.value * 60;
+                tpsActuel = tpsTravail;
+            }
+            if (tpsPauseEntree.value != "") {
+                tpsPause = tpsPauseEntree.value * 60;
+            }
             setInterval(diminuerTps, 1000);
             timerActif = true;
             bouton.innerHTML = `<em class="fa-solid fa-rotate"></em><br>Reset`;
@@ -85,10 +95,8 @@ document.addEventListener("DOMContentLoaded", function() {
             timerActif = false;
         }
 
-        
-
-        
     });
+
     /*
     localStorage.setItem("tpsTravailForm", "23");
 
