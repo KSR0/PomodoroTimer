@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-	
 	//Declaration des variables
 	let tempsAffichage = document.getElementById("tempsAffichage");
 	let bouton = document.getElementById("boutonDebut");
@@ -7,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	let stringPause = document.getElementById("pauseTexte");
 	let tpsTravailEntree = document.getElementById("tpsTravailEntree");
 	let tpsPauseEntree = document.getElementById("tpsPauseEntree");
-	let submitBouton = document.getElementById("submitBtn");
 	
 	let tpsTravail = 1500; //25min
 	let tpsPause = 300; //5min
@@ -18,7 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	let minutes;
 	let secondes;
+
+    //Recuperer et afficher les valeurs du local storage dans les inputs;
+    tpsTravailEntree.value = localStorage.getItem("userTpsTravail");
+    tpsPauseEntree.value = localStorage.getItem("userTpsPause");
 	
+
 	//Change le timer et modifie les styles des mots "Travail" ou "Pause".
 	function verifEtatTravailOuPause() {
 		if (etatTravailOuPause == "Travail") {
@@ -56,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		minutes = parseInt(tpsActuel / 60);
 		secondes = parseInt(tpsActuel % 60);
 		
-		//Permets d'avoir un affichage toujours à deux chiffres.
+		//Permets de toujours avoir un affichage à deux chiffres.
 		if (minutes < 10) {
 			minutes = "0" + minutes;
 		};
@@ -82,10 +85,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	bouton.addEventListener("click", function () {
 		if (!timerActif) {
 			if (tpsTravailEntree.value != "") {
+                localStorage.setItem("userTpsTravail", tpsTravailEntree.value); //Sauvegarder la valeur entrée.
 				tpsTravail = tpsTravailEntree.value * 60; //Conversion des minutes en secondes.
 				tpsActuel = tpsTravail;
-			}
+			} 
 			if (tpsPauseEntree.value != "") {
+                localStorage.setItem("userTpsPause", tpsPauseEntree.value); //Sauvegarder la valeur entrée.
 				tpsPause = tpsPauseEntree.value * 60; //Conversion des minutes en secondes.
 			}
 			setInterval(diminuerTps, 1000); //Fonction diminuant le tps chaque seconde.
@@ -95,14 +100,13 @@ document.addEventListener("DOMContentLoaded", function () {
 			location.reload(); //Reinitialiser la page
 			timerActif = false;
 		}
-		
 	});
-	
-	/*
-	localStorage.setItem("tpsTravailForm", "23");
-	
-	console.log(localStorage.getItem("test"));
-	*/
 });
 
-//Pour save les infos du formulaire meme lors de la fermeture du naviguateur, utiliser le local storage
+
+	// /!\ 
+	// Extension Wave, erreurs de contraste importantes ?
+
+	// Probleme au niveau label dans index.html
+	// sur validator w3c, lui convient si 1 label 
+	// alors que pour achecker, il veut 2 labels
