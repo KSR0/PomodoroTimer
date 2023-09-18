@@ -76,8 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		} else {
 			tpsActuel = 0;
 		}
-		
-		
 	}
 	
 	//Permets la personnalisation du timer pomodoro grace à un form, seulement si entrees. Sinon options par defauts. 
@@ -105,11 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	// /!\ 
-	// Extension Wave, erreurs de contraste importantes ?
-
-	// Probleme au niveau label dans index.html
-	// sur validator w3c, lui convient si 1 label 
-	// alors que pour achecker, il veut 2 labels
 
 	// Retard branche sur Pomodoro_v2
 	// comment regler cela ?

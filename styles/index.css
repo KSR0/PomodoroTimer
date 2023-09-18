@@ -31,7 +31,8 @@ input#tpsTravailEntree, input#tpsPauseEntree {
     width: 40px;
     border: solid black .11em;
     background-color: #c7011a;
-    font-size: 0.8em;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 div#horloge {
