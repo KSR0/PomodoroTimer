@@ -8,11 +8,11 @@ body {
     background-color: #c7011a;
     font-family: 'Oswald', sans-serif;
     text-align: center;
-    font-size: 1.40em;
+    font-size: 1.37em;
 }
 
 div#travailOuPauseAffichage {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     border: solid black .25rem;
     border-radius: 5rem;
     width: 250px;
@@ -22,13 +22,17 @@ div#travailOuPauseAffichage {
     box-shadow: 0px 0px 0.08em 0.05em rgba(0, 0, 0, 0.483);
 }
 
+span#travailTexte {
+    color: white;
+    text-shadow: 0px 0px 10px black;
+}
+
 div#form {
     margin-top: 10px;
     font-size: 1.1em;
 }
 
 input#tpsTravailEntree, input#tpsPauseEntree {
-    width: 40px;
     border: solid black .11em;
     background-color: #c7011a;
     font-size: 1em;
@@ -41,7 +45,7 @@ div#horloge {
     height: 4.5em;
     border-radius: 100%;
     border: solid black .5rem ;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 25px;
@@ -71,7 +75,7 @@ footer {
     background-color: black;
     width: 100%;
     margin-left: -8px;
-    height: 51px;
+    height: 45px;
     bottom: 0;
     color: white;
     font-size: 0.7em;

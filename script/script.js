@@ -20,6 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
     //Recuperer et afficher les valeurs du local storage dans les inputs;
     tpsTravailEntree.value = localStorage.getItem("userTpsTravail");
     tpsPauseEntree.value = localStorage.getItem("userTpsPause");
+
+	if (tpsTravailEntree.value < 10) {
+		console.log("True");
+		tempsAffichage.innerHTML = "0" + tpsTravailEntree.value + " : 00";
+	}
+	else {
+		tempsAffichage.innerHTML = tpsTravailEntree.value + " : 00";
+	}
+	
 	
 
 	//Change le timer et modifie les styles des mots "Travail" ou "Pause".
@@ -30,11 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
 				etatTravailOuPause = "Pause";
 			} else {
 				stringTravail.style.color = "white";
-				stringTravail.style.textDecoration = "underline";
 				stringTravail.style.textShadow = "0px 0px 10px black";
 				
 				stringPause.style.color = "black";
-				stringPause.style.textDecoration = "none";
 				stringPause.style.textShadow = "none";
 			}
 		}
@@ -44,11 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
 				etatTravailOuPause = "Travail";
 			} else {
 				stringPause.style.color = "white";
-				stringPause.style.textDecoration = "underline";
 				stringPause.style.textShadow = "0px 0px 10px black";
 				
 				stringTravail.style.color = "black";
-				stringTravail.style.textDecoration = "none";
 				stringTravail.style.textShadow = "none";
 			}
 		}
@@ -56,6 +61,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	//Affichage du temps en mm:ss et diminution du tps chaque seconde.
 	function diminuerTps() {
+		if (tpsActuel > 0) {
+			tpsActuel--;
+		} else {
+			tpsActuel = 0;
+		}
+
 		minutes = parseInt(tpsActuel / 60);
 		secondes = parseInt(tpsActuel % 60);
 		
@@ -70,27 +81,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		tempsAffichage.innerHTML = `${minutes} : ${secondes}`; //Permets un affichage mm:ss.
 		
 		verifEtatTravailOuPause();
-		
-		if (tpsActuel > 0) {
-			tpsActuel--;
-		} else {
-			tpsActuel = 0;
-		}
 	}
 	
 	//Permets la personnalisation du timer pomodoro grace à un form, seulement si entrees. Sinon options par defauts. 
 	//Change le style du bouton et permet la reinitialisation  la page.
 	bouton.addEventListener("click", function () {
 		if (!timerActif) {
-			if (tpsTravailEntree.value != "") {
-                localStorage.setItem("userTpsTravail", tpsTravailEntree.value); //Sauvegarder la valeur entrée.
-				tpsTravail = tpsTravailEntree.value * 60; //Conversion des minutes en secondes.
-				tpsActuel = tpsTravail;
-			} 
-			if (tpsPauseEntree.value != "") {
-                localStorage.setItem("userTpsPause", tpsPauseEntree.value); //Sauvegarder la valeur entrée.
-				tpsPause = tpsPauseEntree.value * 60; //Conversion des minutes en secondes.
-			}
+            localStorage.setItem("userTpsTravail", tpsTravailEntree.value); //Sauvegarder la valeur entrée.
+			tpsTravail = tpsTravailEntree.value * 60; //Conversion des minutes en secondes.
+			tpsActuel = tpsTravail;
+
+            localStorage.setItem("userTpsPause", tpsPauseEntree.value); //Sauvegarder la valeur entrée.
+			tpsPause = tpsPauseEntree.value * 60; //Conversion des minutes en secondes.
+
 			setInterval(diminuerTps, 1000); //Fonction diminuant le tps chaque seconde.
 			timerActif = true;
 			bouton.innerHTML = `<em class="fa-solid fa-rotate"></em><br>Reset`;
@@ -99,10 +102,44 @@ document.addEventListener("DOMContentLoaded", function () {
 			timerActif = false;
 		}
 	});
+
+	tpsTravailEntree.addEventListener("input", function() {
+		if (tpsTravailEntree.value < 10) {
+			tempsAffichage.innerHTML = "0" + tpsTravailEntree.value + " : 00";
+		}
+		else {
+			tempsAffichage.innerHTML = tpsTravailEntree.value + " : 00";
+		}
+	})
+
+	tpsPauseEntree.addEventListener("input", function() {
+		if (tpsPauseEntree.value < 10) {
+			tempsAffichage.innerHTML = "0" + tpsPauseEntree.value + " : 00";
+		}
+		else {
+			tempsAffichage.innerHTML = tpsPauseEntree.value + " : 00";
+		}
+	})
+
+	//Changer le style de l'affichage horaire lorsqu'on passe la souris sur les curseurs.
+	tpsTravailEntree.addEventListener("mouseenter", function() {
+		tempsAffichage.style.color = "white";
+	});
+
+	tpsTravailEntree.addEventListener("mouseleave", function() {
+		tempsAffichage.style.color = "black";
+	});
+
+	tpsPauseEntree.addEventListener("mouseenter", function() {
+		console.log("true");
+		tempsAffichage.style.color = "white";
+	});
+
+	tpsPauseEntree.addEventListener("mouseleave", function() {
+		tempsAffichage.style.color = "black";
+	});
+
 });
 
-
-	// /!\ 
-
-	// Retard branche sur Pomodoro_v2
-	// comment regler cela ?
+	// TODO :
+	// Si rajouter du son, proposer la desactivation
