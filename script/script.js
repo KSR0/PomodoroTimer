@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				
 		}
 
+		//Jouer la sonnerie si on est a moins de 6 secondes de la fin de la phase.
 		if (tpsActuel <= 5 && sonnerieActive) {
 			sonnerie.play();
 		}
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	});
 
+	//Permet le changement de l'affichage selon la valeur du curseur avec affichage "00 : 00" plutot que "0 : 00"
 	tpsTravailEntree.addEventListener("input", function() {
 		if (tpsTravailEntree.value < 10) {
 			tempsAffichage.innerHTML = "0" + tpsTravailEntree.value + " : 00";
@@ -144,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		tempsAffichage.style.color = "black";
 	});
 
+	//Changer le style du bouton sonnerie et l'état de la sonnerie
 	boutonSon.addEventListener("click", function() {
 		if (!sonnerieActive) {
 			sonnerieActive = true;
@@ -159,6 +162,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 	// TODO :
-	// Si rajouter du son, proposer la desactivation
 	// Rajouter les commentaires
 	// Regler problemes sur affichage mobile
