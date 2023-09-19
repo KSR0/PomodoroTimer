@@ -16,3 +16,7 @@ V2:
   Mettre en œuvre une méthode permettant de conserver les paramètres saisis par l’utilisateur dans le navigateur (Local Storage).
 </li>
 </ul>
+
+#
+
+![Capture](https://github.com/KSR0/PomodoroTimer/assets/119522087/abaac265-43d5-4260-a2ec-1a23cb593fa5)
