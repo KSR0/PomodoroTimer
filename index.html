@@ -2,50 +2,53 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timer Pomodoro</title>
-    <link rel="stylesheet" href="styles/index.css">
-    <link rel="icon" type="image/x-icon" href="img/stopwatch-solid.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/7509b7dacb.js" crossorigin="anonymous"></script>
-    <script src="script/script.js"></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Timer Pomodoro</title>
+	<link rel="stylesheet" href="styles/index.css">
+	<link rel="icon" type="image/x-icon" href="img/stopwatch-solid.svg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/7509b7dacb.js" crossorigin="anonymous"></script>
+	<script src="script/script.js"></script>
 </head>
 
 <body>
-    <header>
-        <h1>TIMER POMODORO</h1>
-    </header>
-    <div class="container">
-
-        <div id="travailOuPauseAffichage">
-            <span id="travailTexte">Travail</span> | <span id="pauseTexte">Pause</span>
-        </div>
-
-        <div id="form">
-            <form>
-                <label for="tpsTravailEntree">Temps de travail en minutes :<br>
-                    <input type="range" value="25" min="0" max="60" id="tpsTravailEntree" name="tpsTravailEntree"><br>
-                </label>
-
-                <label for="tpsPauseEntree">Temps de pause en minutes :<br>
-                    <input type="range" min="0" max="60" id="tpsPauseEntree" name="tpsPauseEntree"><br>
-                </label>
-            </form>
-        </div>
-
-        <div id="horloge">
-            <span id="tempsAffichage">25 : 00</span>
-        </div>
-
-        <div id="divBoutonDebut">
-            <button id="boutonDebut"><em class="fa-regular fa-circle-play"></em><br>Go !</button>
-        </div>
-    </div>
-    <footer><span id="footerTexte">Exercice Javascript<br>
-        © 2023 - 2024 Peyregne Nicolas</span></footer>
-</body>
-</html>
+	<header>
+		<h1>TIMER POMODORO</h1>
+	</header>
+	<div class="container">
+		
+		<div id="travailOuPauseAffichage">
+			<span id="travailTexte">Travail</span> | <span id="pauseTexte">Pause</span>
+		</div>
+		
+		<div id="form">
+			<form>
+				<label for="tpsTravailEntree">Temps de travail en minutes :<br>
+					<input type="range" value="25" min="0" max="60" id="tpsTravailEntree" name="tpsTravailEntree"><br>
+				</label>
+				
+				<label for="tpsPauseEntree">Temps de pause en minutes :<br>
+					<input type="range" min="0" max="60" id="tpsPauseEntree" name="tpsPauseEntree"><br>
+				</label>
+			</form>
+		</div>
+		
+		<div id="horloge">
+			<span id="tempsAffichage">25 : 00</span>
+		</div>
+		
+		<div id="divBoutonDebut">
+			<button id="boutonDebut"><em class="fa-regular fa-circle-play"></em><br>Go !</button>
+		</div>
+	</div>
+	<footer>
+		<span id="footerTexte">Exercice Javascript<br>
+			© 2023 - 2024 Peyregne Nicolas
+		</span>
+	</footer>
+	</body>
+	</html>
