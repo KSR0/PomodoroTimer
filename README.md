@@ -19,4 +19,4 @@ V2:
 
 #
 
-![Maquette_Pomodoro](https://github.com/KSR0/PomodoroTimer/assets/119522087/f8277d55-487a-4e47-91c9-70ce4e580885)
+![Capture](https://github.com/KSR0/PomodoroTimer/assets/119522087/abaac265-43d5-4260-a2ec-1a23cb593fa5)
