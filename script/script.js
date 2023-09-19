@@ -161,3 +161,4 @@ document.addEventListener("DOMContentLoaded", function () {
 	// TODO :
 	// Si rajouter du son, proposer la desactivation
 	// Rajouter les commentaires
+	// Regler problemes sur affichage mobile
