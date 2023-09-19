@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	let stringPause = document.getElementById("pauseTexte");
 	let tpsTravailEntree = document.getElementById("tpsTravailEntree");
 	let tpsPauseEntree = document.getElementById("tpsPauseEntree");
+	let boutonSon = document.getElementById("couperSon");
 	
 	let tpsTravail = 1500; //25min
 	let tpsPause = 300; //5min
@@ -17,20 +18,20 @@ document.addEventListener("DOMContentLoaded", function () {
 	let minutes;
 	let secondes;
 
+	let sonnerieActive = false;
+	let sonnerie = new Audio('audio/sonnerie.mp3');
+
     //Recuperer et afficher les valeurs du local storage dans les inputs;
     tpsTravailEntree.value = localStorage.getItem("userTpsTravail");
     tpsPauseEntree.value = localStorage.getItem("userTpsPause");
 
 	if (tpsTravailEntree.value < 10) {
-		console.log("True");
 		tempsAffichage.innerHTML = "0" + tpsTravailEntree.value + " : 00";
 	}
 	else {
 		tempsAffichage.innerHTML = tpsTravailEntree.value + " : 00";
 	}
 	
-	
-
 	//Change le timer et modifie les styles des mots "Travail" ou "Pause".
 	function verifEtatTravailOuPause() {
 		if (etatTravailOuPause == "Travail") {
@@ -59,12 +60,17 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 	
-	//Affichage du temps en mm:ss et diminution du tps chaque seconde.
+	//Affichage du temps en mm:ss et decrementation du tps chaque seconde.
 	function diminuerTps() {
 		if (tpsActuel > 0) {
 			tpsActuel--;
 		} else {
 			tpsActuel = 0;
+				
+		}
+
+		if (tpsActuel <= 5 && sonnerieActive) {
+			sonnerie.play();
 		}
 
 		minutes = parseInt(tpsActuel / 60);
@@ -131,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	tpsPauseEntree.addEventListener("mouseenter", function() {
-		console.log("true");
 		tempsAffichage.style.color = "white";
 	});
 
@@ -139,7 +144,20 @@ document.addEventListener("DOMContentLoaded", function () {
 		tempsAffichage.style.color = "black";
 	});
 
+	boutonSon.addEventListener("click", function() {
+		if (!sonnerieActive) {
+			sonnerieActive = true;
+			boutonSon.innerHTML = `<em class="fa-regular fa-bell"></em><br>Ring`;
+			boutonSon.style.border = "solid green 5px";
+		} else {
+			sonnerieActive = false;
+			boutonSon.innerHTML = `<em class="fa-regular fa-bell-slash"></em><br>Ring`;
+			boutonSon.style.border = "solid red 5px";
+		}
+	})
+
 });
 
 	// TODO :
 	// Si rajouter du son, proposer la desactivation
+	// Rajouter les commentaires
